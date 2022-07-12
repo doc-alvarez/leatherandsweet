@@ -1,3 +1,13 @@
+<style>
+  .btn.gradient-theme.js-cart-btn-checkout.btn-theme.w-100 {
+    box-shadow: 0 0 1px 1px lightslategrey;
+    border-radius: 9px;
+  }
+  .btn.gradient-theme.js-cart-btn-checkout.btn-theme.w-100:hover {
+    box-shadow: 0 0 10px 1px lightslategrey;
+    border-radius: 9px;
+  }
+</style>
 <span class="site-header__link site-header__cart js-mini-cart {% if settings.cartdraw %} cardraw{% endif %}" data-cartmini="{{settings.cartdraw }}">
   <span class="js-toggle-cart" title="{{'cart.general.title' | t}}">
     {%- include 'icon-cart' -%}
@@ -16,6 +26,11 @@
     <div class="mini-cart-btns mt-4">
       <a class="btn gradient-theme js-cart-btn-checkout btn-theme w-100 {% if cart.item_count == 0 %} disabled{% endif %}" href="/checkout">{{'cart.general.checkout' | t }}</a>
       <a class="btn btn-link btn-sm js-cart-btn-cart" href="/cart">{{'cart.general.update' | t }}</a>
+      {% if additional_checkout_buttons %}
+  <div class="additional-checkout-buttons">
+    {{ content_for_additional_checkout_buttons }}
+  </div>
+{% endif %}
     </div>
 
     {%- if settings.safe_checkout_pcart != blank -%}
@@ -27,5 +42,6 @@
   {%- if settings.cartdraw -%} 
     <div class="overlaycart">
     </div>
+    
   {%- endif -%}
 </span>
