@@ -148,6 +148,9 @@
 	z-index: 998;
 	cursor: pointer
 }
+.icon-quickview {
+  display: none;
+}
 </style>
 
 {%- assign productPerpage = section.settings.collection_perpage -%}
@@ -189,19 +192,19 @@
       </header>
       <div class="category-heading">
         <div class="row">
-          <div class="col col-3 col-left">
+          <!-- <div class="col col-3 col-left">
             <span class="js-toggle-filter d-flex align-items-center justify-content-center">
               <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="sliders-v" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="mr-2"><path fill="currentColor" d="M272 352h-24V16c0-8.8-7.2-16-16-16h-16c-8.8 0-16 7.2-16 16v336h-24c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h24v80c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16v-80h24c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM112 96H88V16c0-8.8-7.2-16-16-16H56c-8.8 0-16 7.2-16 16v80H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h24v336c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16V160h24c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm320 128h-24V16c0-8.8-7.2-16-16-16h-16c-8.8 0-16 7.2-16 16v208h-24c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h24v208c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16V288h24c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16z" class=""></path></svg>
               <span>{{'collections.general.filter' | t}}</span>
             </span>
-          </div>
-          <div class="col-sm-6 col-mid text-center">
+          </div> -->
+          <!-- <div class="col-sm-6 col-mid text-center">
               <div class="d-flex align-items-center h-100 justify-content-center">
             <span class="js-btn-view btn-view-2 {% if productPerrow == '2' %}active{% endif %}" data-col="2"></span>
             <span class="js-btn-view btn-view-3 {% if productPerrow == '3' %}active{% endif %}" data-col="3"></span>
             <span class="js-btn-view btn-view-4 {% if productPerrow == '4' %}active{% endif %}" data-col="4"></span>
             <span class="js-btn-view btn-view-5 {% if productPerrow == '5' %}active{% endif %}" data-col="5"></span>
-	    </div>
+	    </div> -->
           </div>
           <div class="col col-right">
             {%- include 'collection-sortby' -%}
@@ -229,6 +232,17 @@
   {%- include 'coupon_code' -%}
 </div>
 {%- endpaginate -%}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const myArr = Array.from(document.querySelector('#js-sortby'));
+    console.log(myArr);
+    myArr.forEach(el => {
+      if (el.getAttribute('value').includes('created')) {
+        el.style.display = 'none';
+      }
+    })
+});
+</script>
 
 {% schema %}
   {
