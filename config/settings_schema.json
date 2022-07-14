@@ -598,7 +598,7 @@
         "type": "checkbox",
         "id": "font_family_custom",
         "label": " Custom Font ",
-        "info": "FreightDispProBook Font Heading"
+        "info": "Microgramma Font Heading"
       },
       {
         "type": "header",
