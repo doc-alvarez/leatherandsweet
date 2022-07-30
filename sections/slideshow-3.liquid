@@ -535,6 +535,17 @@
       </div>
       {%- endif -%}
     </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    setInterval(() => {
+      let ref = document.querySelector('.slick-next.slick-arrow');
+      ref.click();
+    }, 8000)
+  })
+</script>
+
+
     {% schema %}
     {
       "name": "Slideshow 3",
